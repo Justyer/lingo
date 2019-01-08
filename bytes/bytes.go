@@ -40,6 +40,16 @@ func Extend(dest, src []byte) []byte {
 	return dest
 }
 
+func Merge(bs ...[]byte) []byte {
+	var total []byte
+	for i := 0; i < len(bs); i++ {
+		for j := 0; j < len(bs[i]); j++ {
+			total = append(total, bs[i][j])
+		}
+	}
+	return total
+}
+
 // 只是为了保存
 func BytesToUint16(array []byte) uint16 {
 	var data uint16 = 0
