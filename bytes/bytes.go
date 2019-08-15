@@ -33,6 +33,17 @@ func ByteToForLE(b []byte, n interface{}) {
 	binary.Read(buf, binary.LittleEndian, n)
 }
 
+func ToByteForBE(n interface{}) []byte {
+	buf := new(bytes.Buffer)
+	binary.Write(buf, binary.BigEndian, n)
+	return buf.Bytes()
+}
+
+func ByteToForBE(b []byte, n interface{}) {
+	buf := bytes.NewBuffer(b)
+	binary.Read(buf, binary.BigEndian, n)
+}
+
 func Extend(dest, src []byte) []byte {
 	for i := 0; i < len(src); i++ {
 		dest = append(dest, src[i])
